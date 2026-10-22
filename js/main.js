@@ -292,14 +292,78 @@
     return '★★★★★'.slice(0, full) + '☆☆☆☆☆'.slice(0, 5 - full);
   }
 
+  var stageScaler = null, stageRO = null;
+
   function startGame() {
     var g = GP.get(activeId);
     var stage = $('#stage');
+    stopScaler();
     stage.innerHTML = '';
+    stageScaler = document.createElement('div');
+    stageScaler.className = 'stage-scaler';
+    stage.appendChild(stageScaler);
     crashGuard = false;
-    var api = GP.makeApi(activeId, stage, hudApi());
-    cleanup = g.play(stage, api) || null;
+    var api = GP.makeApi(activeId, stageScaler, hudApi());
+    cleanup = g.play(stageScaler, api) || null;
+    startScaler(stage, stageScaler);
     stage.focus && stage.focus();
+  }
+
+  /* Scale a game up to fill its stage. Games render at a fixed natural size
+     (often a few hundred px), so on a large modal they looked tiny. We measure
+     the content and apply a CSS transform to grow it to the available space.
+     Cap the upscale so pixel-art / text stays crisp; always allow downscale.
+     CSS transforms are reflected in DOM coordinates, so pointer/touch hit-testing
+     (offsetX, bounding rect) keeps working unchanged. */
+  function startScaler(stage, host) {
+    var MAX_UP = 2.5;
+    var probe = document.createElement('div');
+    probe.style.cssText = 'position:absolute;visibility:hidden;pointer-events:none;' +
+      'left:-99999px;top:0;width:max-content;height:max-content;display:inline-block;';
+    document.body.appendChild(probe);
+    function apply() {
+      if (!host || !host.parentNode) return;
+      var kids = host.children;
+      var nw = 0, nh = 0, i;
+      for (i = 0; i < kids.length; i++) {
+        var k = kids[i];
+        // measure the game's natural (intrinsic) size: clone into a max-content
+        // container. The host fills the stage via position:absolute, so its layout
+        // children stretch and measuring them in place would always give ratio 1.
+        var clone = k.cloneNode(true);
+        probe.innerHTML = '';
+        probe.appendChild(clone);
+        var r = probe.getBoundingClientRect();
+        nw = Math.max(nw, r.width);
+        nh = Math.max(nh, r.height);
+      }
+      if (!nw || !nh) return;
+      var aw = stage.clientWidth, ah = stage.clientHeight;
+      if (!aw || !ah) return;
+      var s = Math.min(aw / nw, ah / nh, MAX_UP);
+      if (s > 0.01 && Math.abs(s - 1) > 0.02) {
+        host.style.transform = 'scale(' + s.toFixed(4) + ')';
+      } else {
+        host.style.transform = '';
+      }
+    }
+    // wait a frame so the game has laid itself out before measuring
+    requestAnimationFrame(function () { requestAnimationFrame(apply); });
+    if (window.ResizeObserver) {
+      stageRO = new ResizeObserver(function () { apply(); });
+      stageRO.observe(stage);
+    }
+    window.addEventListener('resize', apply);
+    stageScaler._applyScale = apply;
+    stageScaler._detach = function () {
+      window.removeEventListener('resize', apply);
+      if (probe && probe.parentNode) probe.parentNode.removeChild(probe);
+      if (stageRO) { try { stageRO.disconnect(); } catch (e) {} stageRO = null; }
+    };
+  }
+  function stopScaler() {
+    if (stageScaler && stageScaler._detach) { try { stageScaler._detach(); } catch (e) {} }
+    stageScaler = null;
   }
 
   /* If an uncaught error fires while a game is running, stop the game and
@@ -324,14 +388,62 @@
   function stopGame() {
     if (typeof cleanup === 'function') { try { cleanup(); } catch (e) {} }
     cleanup = null;
+    stopScaler();
     $('#stage').innerHTML = '';
   }
 
   function restart() { if (activeId) { stopGame(); startGame(); } }
 
+  /* ---- maximize: try real fullscreen, else CSS-expanded fallback ---- */
+  var maxBtn = null, maxTarget = null;
+  function fullscreenEl() {
+    return document.fullscreenElement || document.webkitFullscreenElement || null;
+  }
+  function rescaleActive() {
+    if (stageScaler && stageScaler._applyScale) {
+      requestAnimationFrame(function () { stageScaler._applyScale(); });
+    }
+  }
+  function toggleMax() {
+    if (!maxTarget) return;
+    if (fullscreenEl()) {
+      var ex = document.exitFullscreen || document.webkitExitFullscreen;
+      if (ex) ex.call(document);
+      return;
+    }
+    var req = maxTarget.requestFullscreen || maxTarget.webkitRequestFullscreen;
+    if (req) {
+      var p = req.call(maxTarget);
+      if (p && p.catch) p.catch(function () { document.body.classList.add('maxed'); rescaleActive(); });
+      else document.body.classList.add('maxed');
+    } else {
+      document.body.classList.add('maxed');
+    }
+    rescaleActive();
+  }
+  function onFsChange() {
+    document.body.classList.toggle('maxed', !!fullscreenEl());
+    if (maxBtn) maxBtn.textContent = fullscreenEl() ? '🗗' : '⛶';
+    rescaleActive();
+  }
+  function initMax() {
+    maxBtn = document.getElementById('m-max');
+    maxTarget = document.querySelector('#modal .modal-card');
+    if (!maxBtn || !maxTarget) return;
+    maxBtn.onclick = toggleMax;
+    document.addEventListener('fullscreenchange', onFsChange);
+    document.addEventListener('webkitfullscreenchange', onFsChange);
+  }
+
   function closeGame(keepHash) {
     stopGame();
     activeId = null;
+    if (fullscreenEl()) {
+      var ex2 = document.exitFullscreen || document.webkitExitFullscreen;
+      if (ex2) ex2.call(document);
+    }
+    document.body.classList.remove('maxed');
+    if (maxBtn) maxBtn.textContent = '⛶';
     $('#modal').hidden = true;
     document.body.classList.remove('modal-open');
     if (!keepHash) setHash('');
@@ -418,6 +530,7 @@
 
     $('#m-close').onclick = closeGame;
     $('#m-home').onclick = restart;
+    initMax();
     $('#modal-backdrop').onclick = closeGame;
 
     $('#clear-recent').onclick = function () {

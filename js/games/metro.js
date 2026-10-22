@@ -1,6 +1,7 @@
-/* Metro Sprint — true-3D three-lane metro dash with 6 mission levels.
-   Renders with the portal-vendored three.js (js/vendor/three.min.js, MIT);
-   if WebGL/THREE is unavailable the full game logic still runs (auto mode).
+/* Metro Sprint — three-lane metro dash with 6 mission levels.
+   Best experience uses the vendored three.js (js/vendor/three.min.js, MIT) for a
+   real 3D scene. If WebGL/THREE is unavailable on the device, a built-in 2.5D
+   canvas renderer draws the same game so it always stays playable.
    No third-party IP: own character, art and rules. */
 GamePortal.register('metro', {
   title: 'Metro Sprint',
@@ -77,9 +78,17 @@ GamePortal.register('metro', {
     box.appendChild(ctl);
     stage.appendChild(box);
 
-    var has3D = typeof THREE !== 'undefined';
+    var has3D = typeof THREE !== 'undefined' && typeof WebGLRenderingContext !== 'undefined';
     var renderer = null, scene = null, camera = null, player = null, board = null, bodyMesh = null;
     var geo = {}, mat = {};
+    /* pre-check WebGL on a throwaway canvas so a failed renderer never poisons
+       the game canvas (a canvas that has tried webgl can't later give 2d) */
+    if (has3D) {
+      try {
+        var probe = document.createElement('canvas');
+        has3D = !!(probe.getContext('webgl2') || probe.getContext('webgl') || probe.getContext('experimental-webgl'));
+      } catch (eGl) { has3D = false; }
+    }
     if (has3D) {
       try {
         scene = new THREE.Scene();
@@ -153,19 +162,31 @@ GamePortal.register('metro', {
         has3D = false;
         renderer = null;
         scene = null;
+        player = null;
+        board = null;
+        bodyMesh = null;
+        /* the failed WebGLRenderer may have bound a webgl context to the game
+           canvas — swap in a fresh one so the 2D fallback can take it */
+        if (canvas.parentNode) {
+          var fresh = document.createElement('canvas');
+          fresh.className = canvas.className;
+          fresh.width = canvas.width;
+          fresh.height = canvas.height;
+          fresh.setAttribute('data-air', '0');
+          fresh.setAttribute('data-roll', '0');
+          canvas.parentNode.replaceChild(fresh, canvas);
+          canvas = fresh;
+        }
       }
     }
-    if (!has3D) {
-      var fb = document.createElement('div');
-      fb.className = 'ms-fallback';
-      fb.textContent = '3D view unavailable on this device — dash on in auto mode!';
-      wrap.appendChild(fb);
-    }
+    var ctx2d = null;
+    if (!has3D) ctx2d = canvas.getContext('2d');
 
     var lane = 1, px = 0, py = 0, vy = 0, air = 0, rollT = 0;
     var phase = 'play', dist = 0, speed = 0, spawnT = 0, scoreNext = 1;
     var obs = 0, starN = 0, goal = LEVELS[0].goal;
     var objs = [], ties = [], towers = [], raf = 0, last = 0, dead = false, scenery = false;
+    var scrl2d = 0;
 
     function addTies() {
       if (!has3D) return;
@@ -196,7 +217,10 @@ GamePortal.register('metro', {
     }
 
     function spawnCoinRow(ln, z0) {
-      if (!has3D) { objs.push({ type: 'coin', lane: ln, mesh: null, z: z0, ownGeo: false }); return; }
+      if (!has3D) {
+        for (var j = 0; j < 5; j++) objs.push({ type: 'coin', lane: ln, mesh: null, z: z0 - j * 2.1, ownGeo: false, checked: false });
+        return;
+      }
       for (var i = 0; i < 5; i++) {
         var c = new THREE.Mesh(geo.coin, mat.coin);
         c.rotation.x = Math.PI / 2;
@@ -221,11 +245,12 @@ GamePortal.register('metro', {
         var ln = blocked[i];
         var r = Math.random();
         var type = r < big ? 'train' : (r < big + 0.30 ? 'wall' : (r < big + 0.58 ? 'low' : 'bar'));
-        if (!has3D) { objs.push({ type: type, lane: ln, mesh: null, z: zBase - i * 3, ownGeo: false, checked: false }); continue; }
+        var colIdx = Math.floor(Math.random() * 3);
+        if (!has3D) { objs.push({ type: type, lane: ln, mesh: null, z: zBase - i * 3, ownGeo: false, checked: false, col: colIdx }); continue; }
         var mesh = null, ownGeo = false;
         if (type === 'train') {
           mesh = new THREE.Group();
-          var col = [mat.trainA, mat.trainB, mat.trainC][Math.floor(Math.random() * 3)];
+          var col = [mat.trainA, mat.trainB, mat.trainC][colIdx];
           var b = new THREE.Mesh(geo.train, col);
           b.position.y = 1.15;
           mesh.add(b);
@@ -339,6 +364,125 @@ GamePortal.register('metro', {
       hudEl.textContent = '🛴 ' + Math.floor(dist) + 'm / ' + goal + 'm · 🪙 ' + starN + ' · 🚧 ' + obs;
     }
 
+    /* ---- 2.5D canvas fallback renderer (devices without WebGL) ---- */
+    var TIE_OFF = 22 * 6.5, TOWER_OFF = 12 * 12;
+    function projZ(z) {
+      if (z > 9) z = 9;
+      var p = (9 - z) / 83;
+      return Math.max(0, Math.min(1, p));
+    }
+    function projX(wx, p) { return 230 + wx * (16 + 96 * p); }
+    function projY(p) { return 118 + 172 * p * p; }
+    function projS(p) { return 0.16 + 1.06 * p * p; }
+    function fillBox(x, base, w, h, s, col) {
+      ctx2d.fillStyle = col;
+      ctx2d.fillRect(x - w * s / 2, base - h * s, w * s, h * s);
+    }
+    function draw2D() {
+      var c = ctx2d;
+      if (!c) return;
+      c.clearRect(0, 0, 460, 300);
+      c.fillStyle = '#1e1b4b';
+      c.fillRect(0, 0, 460, 300);
+      var sky = c.createLinearGradient(0, 0, 0, 130);
+      sky.addColorStop(0, '#312e81');
+      sky.addColorStop(1, '#1e1b4b');
+      c.fillStyle = sky;
+      c.fillRect(0, 0, 460, 130);
+      c.fillStyle = '#241c5e';
+      c.beginPath();
+      c.moveTo(0, 300);
+      c.lineTo(150, 118);
+      c.lineTo(310, 118);
+      c.lineTo(460, 300);
+      c.closePath();
+      c.fill();
+      var sx = [-3.15, -1.05, 1.05, 3.15];
+      c.strokeStyle = 'rgba(34,211,238,0.55)';
+      c.lineWidth = 2;
+      for (var s = 0; s < 4; s++) {
+        c.beginPath();
+        c.moveTo(projX(sx[s], 0), 118);
+        c.lineTo(projX(sx[s], 1), 300);
+        c.stroke();
+      }
+      var tieZ = (scrl2d % TIE_OFF) - TIE_OFF;
+      c.strokeStyle = 'rgba(76,29,149,0.95)';
+      c.lineWidth = 3;
+      for (var tz = tieZ; tz < 9; tz += 6.5) {
+        var tp = projZ(tz);
+        c.beginPath();
+        c.moveTo(projX(-3.4, tp), projY(tp));
+        c.lineTo(projX(3.4, tp), projY(tp));
+        c.stroke();
+      }
+      for (var k = 0; k < 12; k++) {
+        var twz = ((k * 12 + scrl2d) % TOWER_OFF) - TOWER_OFF + 10;
+        if (twz > 9 || twz < -78) continue;
+        var wp = projZ(twz);
+        var hgt = 3 + (k % 4) * 1.4;
+        var wx = k % 2 === 0 ? -6.4 : 6.4;
+        var base = projY(wp);
+        var sc = projS(wp);
+        fillBox(projX(wx, wp), base, 2.4, hgt, sc, ['#312e81', '#1e1b4b', '#4c1d95'][k % 3]);
+      }
+      var drawList = [];
+      for (var oi = 0; oi < objs.length; oi++) drawList.push(objs[oi]);
+      drawList.sort(function (a, b) { return a.z - b.z; });
+      for (var di = 0; di < drawList.length; di++) {
+        var o = drawList[di];
+        var op = projZ(o.z);
+        var ox = projX(LX[o.lane], op);
+        var obase = projY(op);
+        var os = projS(op);
+        if (o.type === 'coin') {
+          c.fillStyle = '#fbbf24';
+          c.beginPath();
+          c.ellipse(ox, obase - 1.05 * os * 42, 12 * os, 12 * os, 0, 0, 6.2832);
+          c.fill();
+          continue;
+        }
+        var tCol = ['#ef4444', '#f59e0b', '#10b981'][o.col || 0];
+        if (o.type === 'train') {
+          fillBox(ox, obase, 1.78, 2.15, os * 42, tCol);
+          fillBox(ox, obase - 2.15 * os * 42, 1.5, 0.5, os * 42, '#0f172a');
+        } else if (o.type === 'wall') {
+          fillBox(ox, obase, 1.72, 2.3, os * 42, '#f43f5e');
+        } else if (o.type === 'low') {
+          fillBox(ox, obase, 1.66, 0.74, os * 42, '#f97316');
+          fillBox(ox, obase - 0.06 * os * 42, 0.8, 0.28, os * 42, '#eab308');
+        } else {
+          fillBox(ox - 0.82 * os * 42, obase, 0.16, 1.2, os * 42, '#eab308');
+          fillBox(ox + 0.82 * os * 42, obase, 0.16, 1.2, os * 42, '#eab308');
+          fillBox(ox, obase - 1.1 * os * 42, 1.8, 0.45, os * 42, '#eab308');
+        }
+      }
+      var pp = 1;
+      var plx = projX(px, pp);
+      var plbase = projY(pp) + 6;
+      var lift = py * 34;
+      var squash = rollT > 0 ? 0.45 : 1;
+      c.save();
+      c.translate(plx, plbase - lift);
+      if (rollT > 0) c.rotate(0.28);
+      c.fillStyle = '#22d3ee';
+      c.beginPath();
+      c.ellipse(0, 0, 24, 7, 0, 0, 6.2832);
+      c.fill();
+      c.fillStyle = '#fde68a';
+      c.fillRect(-11, -34 * squash, 22, 32 * squash);
+      c.fillStyle = '#fca5a5';
+      c.beginPath();
+      c.arc(0, -42 * squash, 10, 0, 6.2832);
+      c.fill();
+      c.restore();
+      var fog = c.createLinearGradient(0, 110, 0, 170);
+      fog.addColorStop(0, 'rgba(49,46,129,0.85)');
+      fog.addColorStop(1, 'rgba(49,46,129,0)');
+      c.fillStyle = fog;
+      c.fillRect(0, 110, 460, 60);
+    }
+
     function loop(t) {
       raf = requestAnimationFrame(loop);
       if (phase !== 'run') return;
@@ -446,6 +590,9 @@ GamePortal.register('metro', {
         camera.position.x += (px * 0.42 - camera.position.x) * Math.min(1, 5 * dt);
         camera.lookAt(px * 0.3, 1.15, -9);
         renderer.render(scene, camera);
+      } else if (!has3D) {
+        scrl2d += speed * dt;
+        draw2D();
       }
       updateHud();
     }
