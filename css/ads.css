@@ -1,0 +1,43 @@
+/* ============ Google AdSense ad slots ============
+   Each slot shows a labelled placeholder until AD_CLIENT / AD_SLOTS are
+   filled in js/ads.js — then it becomes a live <ins> unit. */
+
+.ad-slot{
+  display:block;width:100%;margin:18px auto;padding:14px;
+  background:var(--card);border:2px dashed var(--line);border-radius:var(--r);
+  text-align:center;box-sizing:border-box;
+}
+.ad-slot .ad-hint{
+  display:block;font-size:12.5px;font-weight:600;color:var(--muted);
+}
+.ad-slot .ad-label{
+  display:none;font-size:11px;font-weight:800;letter-spacing:1.4px;
+  text-transform:uppercase;color:var(--muted);margin-bottom:6px;
+}
+.ad-slot .adsbygoogle{display:none}
+
+/* configured + slot id filled → live unit */
+.ad-slot.ad-live{border:0;background:none;padding:0}
+.ad-slot.ad-live .ad-hint{display:none}
+.ad-slot.ad-live .ad-label{display:block}
+.ad-slot.ad-live .adsbygoogle{display:block}
+
+/* placements */
+#ad-top{margin:0 auto 14px}
+#ad-mid{margin:0 0 18px}
+#ad-grid{margin:30px auto 0}
+.side .ad-slot{margin:0;max-width:none}
+#ad-anchor{
+  width:min(1240px,calc(100% - 40px));
+  margin:18px auto 30px;
+}
+#ad-anchor .ad-label{display:none !important}
+
+/* live units reserve their usual space to limit layout shift */
+#ad-top.ad-live,#ad-mid.ad-live,#ad-grid.ad-live{min-height:90px}
+#ad-side.ad-live{min-height:250px}
+#ad-anchor.ad-live{min-height:0;padding:0;border:0;background:none}
+
+@media (min-width:1100px){
+  #ad-top.ad-live,#ad-grid.ad-live{max-width:970px}
+}
