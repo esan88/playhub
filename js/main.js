@@ -521,12 +521,17 @@
     };
     $('#sound-icon').textContent = GP.sound.muted ? '🔇' : '🔊';
 
-    $('#brand-home').onclick = function (e) {
-      e.preventDefault(); closeGame();
+    /* shared Home action: close any game, reset search + category, scroll to top */
+    function goHome(e) {
+      if (e) e.preventDefault();
+      closeGame();
       state.q = ''; state.cat = 'all'; $('#search').value = '';
       renderCats(); renderGrid();
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
+    }
+    $('#brand-home').onclick = goHome;
+    $('#topnav-home').onclick = goHome;
+    $('#brand-foot').onclick = goHome;
 
     $('#m-close').onclick = closeGame;
     $('#m-home').onclick = restart;
