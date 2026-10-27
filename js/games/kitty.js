@@ -3,10 +3,10 @@
 GamePortal.register('kitty', {
   title: 'Kitty Care Day',
   emoji: '🐱',
-  cat: 'girls',
+  cat: 'arts',
   c1: '#f59e0b',
   c2: '#fda4af',
-  tags: ['kitty', 'cat', 'pet', 'care', 'feed', 'play', 'girls', 'cute', 'animals', 'kind', 'daily', 'nurture'],
+  tags: ['kitty', 'cat', 'pet', 'care', 'feed', 'play', 'arts', 'cute', 'animals', 'kind', 'daily', 'nurture'],
   rating: 4.8,
   plays: '0.4M',
   badge: 'Caring',

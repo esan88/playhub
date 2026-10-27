@@ -2,7 +2,7 @@
 GamePortal.register('basket', {
   title: 'Basket Shot',
   emoji: '🏀',
-  cat: 'boys',
+  cat: 'adventure',
   c1: '#b85c1e',
   c2: '#f4a261',
   tags: ['basketball', 'sports', 'boys', 'arcade', 'kids', 'shoot', 'timing'],

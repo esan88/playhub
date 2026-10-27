@@ -3,10 +3,10 @@
 GamePortal.register('kcook', {
   title: 'Korean Cooking Lesson',
   emoji: '🍲',
-  cat: 'girls',
+  cat: 'arts',
   c1: '#dc2626',
   c2: '#fecaca',
-  tags: ['korean', 'cooking', 'recipe', 'kitchen', 'kimbap', 'tteokbokki', 'bibimbap', 'hotteok', 'food', 'girls', 'lesson', 'seoul', 'levels'],
+  tags: ['korean', 'cooking', 'recipe', 'kitchen', 'kimbap', 'tteokbokki', 'bibimbap', 'hotteok', 'food', 'arts', 'lesson', 'seoul', 'levels'],
   rating: 4.9,
   plays: '0.2M',
   badge: 'New',

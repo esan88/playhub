@@ -2,10 +2,10 @@
 GamePortal.register('starcatch', {
   title: 'Star Catcher',
   emoji: '⭐',
-  cat: 'girls',
+  cat: 'arts',
   c1: '#7c3aed',
   c2: '#c4b5fd',
-  tags: ['girls', 'stars', 'catch', 'night', 'arcade', 'sky', 'kids', 'fun', 'cute'],
+  tags: ['arts', 'stars', 'catch', 'night', 'arcade', 'sky', 'kids', 'fun', 'cute'],
   rating: 4.6,
   plays: '1.6M',
   badge: 'For girls',

@@ -3,10 +3,10 @@
 GamePortal.register('bracelet', {
   title: 'Friendship Bracelets',
   emoji: '📿',
-  cat: 'girls',
+  cat: 'arts',
   c1: '#c026d3',
   c2: '#67e8f9',
-  tags: ['bracelet', 'friendship', 'pattern', 'beads', 'memory', 'girls', 'craft', 'colour', 'design', 'gifts', 'creative'],
+  tags: ['bracelet', 'friendship', 'pattern', 'beads', 'memory', 'arts', 'craft', 'colour', 'design', 'gifts', 'creative'],
   rating: 4.8,
   plays: '0.2M',
   badge: 'Creative',

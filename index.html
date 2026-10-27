@@ -9,7 +9,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <title>PlayHub — Play Free Online Games for Learning & Fun</title>
-<meta name="description" content="Play 70 free online games in your browser — arcade, puzzles, quizzes, world exams, learning games for kids and 13 Class 1 maths games. No downloads, no sign-up. Play instantly on any device!">
+<meta name="description" content="Play 70 free online games in your browser — arcade, puzzles, quizzes, world exams, learning games for kids and 22 Class 1 maths and English games. No downloads, no sign-up. Play instantly on any device!">
 <link rel="canonical" href="https://playhub.example.com/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="theme-color" content="#5b3df5">
@@ -17,7 +17,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PlayHub">
 <meta property="og:title" content="PlayHub — Play Free Online Games for Learning & Fun">
-<meta property="og:description" content="Play 70 free online games in your browser — arcade, puzzles, quizzes, world exams, learning games for kids and 13 Class 1 maths games. No downloads, no sign-up. Play instantly on any device!">
+<meta property="og:description" content="Play 70 free online games in your browser — arcade, puzzles, quizzes, world exams, learning games for kids and 22 Class 1 maths and English games. No downloads, no sign-up. Play instantly on any device!">
 <meta property="og:url" content="https://playhub.example.com/">
 <meta property="og:image" content="https://playhub.example.com/img/og-cover.png">
 <meta property="og:image:width" content="1200">
@@ -26,7 +26,7 @@
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="PlayHub — Play Free Online Games for Learning & Fun">
-<meta name="twitter:description" content="Play 70 free online games in your browser — arcade, puzzles, quizzes, world exams, learning games for kids and 13 Class 1 maths games. No downloads, no sign-up.">
+<meta name="twitter:description" content="Play 70 free online games in your browser — arcade, puzzles, quizzes, world exams, learning games for kids and 22 Class 1 maths and English games. No downloads, no sign-up.">
 <meta name="twitter:image" content="https://playhub.example.com/img/og-cover.png">
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
@@ -61,7 +61,7 @@
         { "@type": "Question", "name": "Are the games on PlayHub free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every game on PlayHub is completely free to play — there are no premiums, no coins and no accounts to create." } },
         { "@type": "Question", "name": "Do I need to download or install anything?", "acceptedAnswer": { "@type": "Answer", "text": "No. PlayHub runs entirely in your web browser using HTML, CSS and JavaScript, so there is nothing to download or install." } },
         { "@type": "Question", "name": "Can I play PlayHub games on a phone or tablet?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The site and its games are built to work on phones, tablets, laptops and desktop computers, with touch controls and on-screen buttons." } },
-        { "@type": "Question", "name": "What learning games can kids play?", "acceptedAnswer": { "@type": "Answer", "text": "Kids can practise typing, maths, reading the clock, counting, world flags and word puzzles, plus a Grade 1 Science and Mathematics olympiad course with 15 chapters per subject. There are also 13 Class 1 maths games that follow every chapter of the NCERT Joyful Mathematics book, and 9 Class 1 English chapter lessons with games from the NCERT Mridang book. For Class 2 there are 13 English, 11 maths and 26 Hindi chapter lessons with games. For Class 3 there are 102 chapter lessons with games across Maths Mela, Santoor, Veena, Our Wondrous World, Bansuri, Khel Yoga and Sitar." } },
+        { "@type": "Question", "name": "What learning games can kids play?", "acceptedAnswer": { "@type": "Answer", "text": "Kids can practise typing, maths, reading the clock, counting, world flags and word puzzles, plus a Grade 1 Science and Mathematics olympiad course with 15 chapters per subject. There are also 22 Class 1 maths and English games that follow every chapter of the NCERT Joyful Mathematics book, and 9 Class 1 English chapter lessons with games from the NCERT Mridang book. For Class 2 there are 13 English, 11 maths and 26 Hindi chapter lessons with games. For Class 3 there are 102 chapter lessons with games across Maths Mela, Santoor, Veena, Our Wondrous World, Bansuri, Khel Yoga and Sitar." } },
         { "@type": "Question", "name": "Do I need an account or sign-up?", "acceptedAnswer": { "@type": "Answer", "text": "No sign-up is needed. Your best scores are saved locally in your own browser, so you can start playing right away." } }
       ]
     },
@@ -173,9 +173,10 @@
     <nav class="topnav" id="topnav" aria-label="Main navigation">
       <a class="topnav-link" href="./index.html" id="topnav-home">🏠 Home</a>
       <a class="topnav-link" href="#cat-all">✨ All Games</a>
-      <a class="topnav-link" href="#learning">🧮 Class 1</a>
+      <a class="topnav-link" href="#class1">🧮 Class 1</a>
       <a class="topnav-link" href="#class2-english">📗 Class 2</a>
       <a class="topnav-link" href="#class3">📘 Class 3</a>
+      <a class="topnav-link" href="#class4">📙 Class 4</a>
       <a class="topnav-link" href="#world-exam">🏆 World Exam</a>
       <a class="topnav-link" href="#about">ℹ️ About</a>
     </nav>
@@ -252,109 +253,184 @@
     </div>
   </section>
 
-  <!-- Class 1 maths: 13 chapter learning pages (lesson + interactive game each) -->
-  <section class="row" id="learning">
+  
+
+  <!-- Class 1: Maths + English merged -->
+  <section class="row" id="class1">
     <div class="row-head">
-      <h2 id="chapters">📖 Class 1 Maths — every chapter, learned by playing</h2>
-      <span class="count">13 chapters</span>
+      <h2 id="class1-chapters">📖 Class 1 — every chapter, learned by playing</h2>
+      <span class="count">22 chapters</span>
     </div>
-    <p class="learn-lede">Open any chapter of the NCERT Joyful Mathematics Class 1 textbook for a kid-friendly lesson — key points, word cards and a game with up to 3 stars. Works on phone, tablet and computer.</p>
-    <div class="chap-grid">
-        <a class="chap-card" href="chapters/ch1.html" data-chap-stars="ch1" style="--c1:#5b3df5;--c2:#ff4d8d">
-          <span class="chap-emo" aria-hidden="true">🐱</span>
-          <span class="chap-badge">Chapter 1</span>
-          <span class="chap-title">Finding the Furry Cat!</span>
-          <span class="chap-topic">Position words</span>
-          <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
-        </a>
-        <a class="chap-card" href="chapters/ch2.html" data-chap-stars="ch2" style="--c1:#0ea5e9;--c2:#22c55e">
-          <span class="chap-emo" aria-hidden="true">🟡</span>
-          <span class="chap-badge">Chapter 2</span>
-          <span class="chap-title">What is Long? What is Round?</span>
-          <span class="chap-topic">Shapes all around</span>
-          <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
-        </a>
-        <a class="chap-card" href="chapters/ch3.html" data-chap-stars="ch3" style="--c1:#f59e0b;--c2:#ef4444">
-          <span class="chap-emo" aria-hidden="true">🥭</span>
-          <span class="chap-badge">Chapter 3</span>
-          <span class="chap-title">Mango Treat</span>
-          <span class="chap-topic">Counting 1 to 9</span>
-          <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
-        </a>
-        <a class="chap-card" href="chapters/ch4.html" data-chap-stars="ch4" style="--c1:#ec4899;--c2:#8b5cf6">
-          <span class="chap-emo" aria-hidden="true">🐞</span>
-          <span class="chap-badge">Chapter 4</span>
-          <span class="chap-title">Dotty Bug and Her Designs</span>
-          <span class="chap-topic">Making 10</span>
-          <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
-        </a>
-        <a class="chap-card" href="chapters/ch5.html" data-chap-stars="ch5" style="--c1:#10b981;--c2:#3b82f6">
-          <span class="chap-emo" aria-hidden="true">🧮</span>
-          <span class="chap-badge">Chapter 5</span>
-          <span class="chap-title">How Many?</span>
-          <span class="chap-topic">Adding and taking away</span>
-          <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
-        </a>
-        <a class="chap-card" href="chapters/ch6.html" data-chap-stars="ch6" style="--c1:#22c55e;--c2:#84cc16">
-          <span class="chap-emo" aria-hidden="true">🥕</span>
-          <span class="chap-badge">Chapter 6</span>
-          <span class="chap-title">Vegetable Farm</span>
-          <span class="chap-topic">Adding up to 20</span>
-          <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
-        </a>
-        <a class="chap-card" href="chapters/ch7.html" data-chap-stars="ch7" style="--c1:#f97316;--c2:#eab308">
-          <span class="chap-emo" aria-hidden="true">📏</span>
-          <span class="chap-badge">Chapter 7</span>
-          <span class="chap-title">Lina's Family</span>
-          <span class="chap-topic">Measuring &amp; comparing</span>
-          <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
-        </a>
-        <a class="chap-card" href="chapters/ch8.html" data-chap-stars="ch8" style="--c1:#6366f1;--c2:#06b6d4">
-          <span class="chap-emo" aria-hidden="true">🔢</span>
-          <span class="chap-badge">Chapter 8</span>
-          <span class="chap-title">Fun with Numbers</span>
-          <span class="chap-topic">Numbers 21 to 100</span>
-          <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
-        </a>
-        <a class="chap-card" href="chapters/ch9.html" data-chap-stars="ch9" style="--c1:#a855f7;--c2:#ec4899">
-          <span class="chap-emo" aria-hidden="true">🎉</span>
-          <span class="chap-badge">Chapter 9</span>
-          <span class="chap-title">Utsav</span>
-          <span class="chap-topic">Patterns &amp; shapes</span>
-          <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
-        </a>
-        <a class="chap-card" href="chapters/ch10.html" data-chap-stars="ch10" style="--c1:#0ea5e9;--c2:#f59e0b">
-          <span class="chap-emo" aria-hidden="true">🌅</span>
-          <span class="chap-badge">Chapter 10</span>
-          <span class="chap-title">How Do I Spend My Day?</span>
-          <span class="chap-topic">Daily routine &amp; time</span>
-          <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
-        </a>
-        <a class="chap-card" href="chapters/ch11.html" data-chap-stars="ch11" style="--c1:#ef4444;--c2:#f97316">
-          <span class="chap-emo" aria-hidden="true">🎠</span>
-          <span class="chap-badge">Chapter 11</span>
-          <span class="chap-title">How Many Times?</span>
-          <span class="chap-topic">Same number again and again</span>
-          <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
-        </a>
-        <a class="chap-card" href="chapters/ch12.html" data-chap-stars="ch12" style="--c1:#eab308;--c2:#14b8a6">
-          <span class="chap-emo" aria-hidden="true">💰</span>
-          <span class="chap-badge">Chapter 12</span>
-          <span class="chap-title">How Much Can We Spend?</span>
-          <span class="chap-topic">Money</span>
-          <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
-        </a>
-        <a class="chap-card" href="chapters/ch13.html" data-chap-stars="ch13" style="--c1:#8b5cf6;--c2:#06b6d4">
-          <span class="chap-emo" aria-hidden="true">🧸</span>
-          <span class="chap-badge">Chapter 13</span>
-          <span class="chap-title">So Many Toys</span>
-          <span class="chap-topic">More, less or equal</span>
-          <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
-        </a>
+    <p class="learn-lede">Open any chapter of the NCERT Class 1 textbooks for a kid-friendly lesson — key points, word cards and a game with up to 3 stars. Works on phone, tablet and computer.</p>
+    <div class="class1-tabs" role="tablist" aria-label="Class 1 subjects">
+      <button class="tab-btn active" role="tab" aria-selected="true" data-tab="class1-maths">🧮 Maths (13)</button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-tab="class1-english">📚 English (9)</button>
+    </div>
+    <div class="tab-panel active" id="class1-maths" role="tabpanel" aria-labelledby="class1-maths-tab">
+      <div class="chap-grid">
+          <a class="chap-card" href="chapters/ch1.html" data-chap-stars="ch1" style="--c1:#5b3df5;--c2:#ff4d8d">
+            <span class="chap-emo" aria-hidden="true">🐱</span>
+            <span class="chap-badge">Chapter 1</span>
+            <span class="chap-title">Finding the Furry Cat!</span>
+            <span class="chap-topic">Position words</span>
+            <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
+          </a>
+          <a class="chap-card" href="chapters/ch2.html" data-chap-stars="ch2" style="--c1:#0ea5e9;--c2:#22c55e">
+            <span class="chap-emo" aria-hidden="true">🟡</span>
+            <span class="chap-badge">Chapter 2</span>
+            <span class="chap-title">What is Long? What is Round?</span>
+            <span class="chap-topic">Shapes all around</span>
+            <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
+          </a>
+          <a class="chap-card" href="chapters/ch3.html" data-chap-stars="ch3" style="--c1:#f59e0b;--c2:#ef4444">
+            <span class="chap-emo" aria-hidden="true">🥭</span>
+            <span class="chap-badge">Chapter 3</span>
+            <span class="chap-title">Mango Treat</span>
+            <span class="chap-topic">Counting 1 to 9</span>
+            <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
+          </a>
+          <a class="chap-card" href="chapters/ch4.html" data-chap-stars="ch4" style="--c1:#ec4899;--c2:#8b5cf6">
+            <span class="chap-emo" aria-hidden="true">🐞</span>
+            <span class="chap-badge">Chapter 4</span>
+            <span class="chap-title">Dotty Bug and Her Designs</span>
+            <span class="chap-topic">Making 10</span>
+            <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
+          </a>
+          <a class="chap-card" href="chapters/ch5.html" data-chap-stars="ch5" style="--c1:#10b981;--c2:#3b82f6">
+            <span class="chap-emo" aria-hidden="true">🧮</span>
+            <span class="chap-badge">Chapter 5</span>
+            <span class="chap-title">How Many?</span>
+            <span class="chap-topic">Adding and taking away</span>
+            <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
+          </a>
+          <a class="chap-card" href="chapters/ch6.html" data-chap-stars="ch6" style="--c1:#22c55e;--c2:#84cc16">
+            <span class="chap-emo" aria-hidden="true">🥕</span>
+            <span class="chap-badge">Chapter 6</span>
+            <span class="chap-title">Vegetable Farm</span>
+            <span class="chap-topic">Adding up to 20</span>
+            <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
+          </a>
+          <a class="chap-card" href="chapters/ch7.html" data-chap-stars="ch7" style="--c1:#f97316;--c2:#eab308">
+            <span class="chap-emo" aria-hidden="true">📏</span>
+            <span class="chap-badge">Chapter 7</span>
+            <span class="chap-title">Lina's Family</span>
+            <span class="chap-topic">Measuring & comparing</span>
+            <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
+          </a>
+          <a class="chap-card" href="chapters/ch8.html" data-chap-stars="ch8" style="--c1:#6366f1;--c2:#06b6d4">
+            <span class="chap-emo" aria-hidden="true">🔢</span>
+            <span class="chap-badge">Chapter 8</span>
+            <span class="chap-title">Fun with Numbers</span>
+            <span class="chap-topic">Numbers 21 to 100</span>
+            <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
+          </a>
+          <a class="chap-card" href="chapters/ch9.html" data-chap-stars="ch9" style="--c1:#a855f7;--c2:#ec4899">
+            <span class="chap-emo" aria-hidden="true">🎉</span>
+            <span class="chap-badge">Chapter 9</span>
+            <span class="chap-title">Utsav</span>
+            <span class="chap-topic">Patterns & shapes</span>
+            <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
+          </a>
+          <a class="chap-card" href="chapters/ch10.html" data-chap-stars="ch10" style="--c1:#0ea5e9;--c2:#f59e0b">
+            <span class="chap-emo" aria-hidden="true">🌅</span>
+            <span class="chap-badge">Chapter 10</span>
+            <span class="chap-title">How Do I Spend My Day?</span>
+            <span class="chap-topic">Daily routine & time</span>
+            <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
+          </a>
+          <a class="chap-card" href="chapters/ch11.html" data-chap-stars="ch11" style="--c1:#ef4444;--c2:#f97316">
+            <span class="chap-emo" aria-hidden="true">🎠</span>
+            <span class="chap-badge">Chapter 11</span>
+            <span class="chap-title">How Many Times?</span>
+            <span class="chap-topic">Same number again and again</span>
+            <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
+          </a>
+          <a class="chap-card" href="chapters/ch12.html" data-chap-stars="ch12" style="--c1:#eab308;--c2:#14b8a6">
+            <span class="chap-emo" aria-hidden="true">💰</span>
+            <span class="chap-badge">Chapter 12</span>
+            <span class="chap-title">How Much Can We Spend?</span>
+            <span class="chap-topic">Money</span>
+            <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
+          </a>
+          <a class="chap-card" href="chapters/ch13.html" data-chap-stars="ch13" style="--c1:#8b5cf6;--c2:#06b6d4">
+            <span class="chap-emo" aria-hidden="true">🧸</span>
+            <span class="chap-badge">Chapter 13</span>
+            <span class="chap-title">So Many Toys</span>
+            <span class="chap-topic">More, less or equal</span>
+            <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
+          </a>
+      </div>
+    </div>
+    <div class="tab-panel" id="class1-english" role="tabpanel" aria-labelledby="class1-english-tab" hidden>
+      <div class="chap-grid">
+          <a class="chap-card" href="chapters/en1.html" data-chap-stars="en1" style="--c1:#ef476f;--c2:#ffb703">
+            <span class="chap-emo" aria-hidden="true">🖐️</span>
+            <span class="chap-badge">Chapter 1</span>
+            <span class="chap-title">Two Little Hands</span>
+            <span class="chap-topic">Body parts & senses</span>
+            <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
+          </a>
+          <a class="chap-card" href="chapters/en2.html" data-chap-stars="en2" style="--c1:#8b5cf6;--c2:#06b6d4">
+            <span class="chap-emo" aria-hidden="true">👋</span>
+            <span class="chap-badge">Chapter 2</span>
+            <span class="chap-title">Greetings</span>
+            <span class="chap-topic">Greetings & action words</span>
+            <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
+          </a>
+          <a class="chap-card" href="chapters/en3.html" data-chap-stars="en3" style="--c1:#0ea5e9;--c2:#22c55e">
+            <span class="chap-emo" aria-hidden="true">🦁</span>
+            <span class="chap-badge">Chapter 3</span>
+            <span class="chap-title">Picture Time</span>
+            <span class="chap-topic">Animals & counting</span>
+            <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
+          </a>
+          <a class="chap-card" href="chapters/en4.html" data-chap-stars="en4" style="--c1:#f59e0b;--c2:#7c3aed">
+            <span class="chap-emo" aria-hidden="true">🧢</span>
+            <span class="chap-badge">Chapter 4</span>
+            <span class="chap-title">The Cap-seller and the Monkeys</span>
+            <span class="chap-topic">Story & sequencing</span>
+            <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
+          </a>
+          <a class="chap-card" href="chapters/en5.html" data-chap-stars="en5" style="--c1:#16a34a;--c2:#eab308">
+            <span class="chap-emo" aria-hidden="true">🐄</span>
+            <span class="chap-badge">Chapter 5</span>
+            <span class="chap-title">A Farm</span>
+            <span class="chap-topic">Farm animals & sounds</span>
+            <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
+          </a>
+          <a class="chap-card" href="chapters/en6.html" data-chap-stars="en6" style="--c1:#ef4444;--c2:#22c55e">
+            <span class="chap-emo" aria-hidden="true">🥭</span>
+            <span class="chap-badge">Chapter 6</span>
+            <span class="chap-title">Fun with Pictures</span>
+            <span class="chap-topic">Fruits & vegetables</span>
+            <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
+          </a>
+          <a class="chap-card" href="chapters/en7.html" data-chap-stars="en7" style="--c1:#f97316;--c2:#ec4899">
+            <span class="chap-emo" aria-hidden="true">🍽️</span>
+            <span class="chap-badge">Chapter 7</span>
+            <span class="chap-title">The Food we Eat</span>
+            <span class="chap-topic">Food, riddles & sharing</span>
+            <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
+          </a>
+          <a class="chap-card" href="chapters/en8.html" data-chap-stars="en8" style="--c1:#06b6d4;--c2:#8b5cf6">
+            <span class="chap-emo" aria-hidden="true">🌦️</span>
+            <span class="chap-badge">Chapter 8</span>
+            <span class="chap-title">The Four Seasons</span>
+            <span class="chap-topic">Seasons & clothes</span>
+            <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
+          </a>
+          <a class="chap-card" href="chapters/en9.html" data-chap-stars="en9" style="--c1:#6366f1;--c2:#f43f5e">
+            <span class="chap-emo" aria-hidden="true">🌈</span>
+            <span class="chap-badge">Chapter 9</span>
+            <span class="chap-title">Anandi&rsquo;s Rainbow</span>
+            <span class="chap-topic">Colours of the rainbow</span>
+            <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
+          </a>
+      </div>
     </div>
   </section>
 
-  <!-- World Exam hub: exam challenge + world training games -->
+<!-- World Exam hub: exam challenge + world training games -->
   <section class="row" id="world-exam">
     <div class="row-head">
       <h2 id="world-exam-title">🏆 World Exam — practice tests &amp; world challenges for ages 5–10</h2>
@@ -381,79 +457,7 @@
     </div>
   </section>
 
-  <!-- Class 1 English: 9 chapter learning pages (lesson + interactive game each) -->
-  <section class="row" id="english">
-    <div class="row-head">
-      <h2 id="english-chapters">📖 Class 1 English — every chapter, learned by playing</h2>
-      <span class="count">9 chapters</span>
-    </div>
-    <p class="learn-lede">Open any chapter of the NCERT Mridang Class 1 English textbook for a kid-friendly lesson — key points, word cards and a matching, quiz or story-order game with up to 3 stars. Works on phone, tablet and computer.</p>
-    <div class="chap-grid">
-        <a class="chap-card" href="chapters/en1.html" data-chap-stars="en1" style="--c1:#ef476f;--c2:#ffb703">
-          <span class="chap-emo" aria-hidden="true">🖐️</span>
-          <span class="chap-badge">Chapter 1</span>
-          <span class="chap-title">Two Little Hands</span>
-          <span class="chap-topic">Body parts &amp; senses</span>
-          <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
-        </a>
-        <a class="chap-card" href="chapters/en2.html" data-chap-stars="en2" style="--c1:#8b5cf6;--c2:#06b6d4">
-          <span class="chap-emo" aria-hidden="true">👋</span>
-          <span class="chap-badge">Chapter 2</span>
-          <span class="chap-title">Greetings</span>
-          <span class="chap-topic">Greetings &amp; action words</span>
-          <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
-        </a>
-        <a class="chap-card" href="chapters/en3.html" data-chap-stars="en3" style="--c1:#0ea5e9;--c2:#22c55e">
-          <span class="chap-emo" aria-hidden="true">🦁</span>
-          <span class="chap-badge">Chapter 3</span>
-          <span class="chap-title">Picture Time</span>
-          <span class="chap-topic">Animals &amp; counting</span>
-          <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
-        </a>
-        <a class="chap-card" href="chapters/en4.html" data-chap-stars="en4" style="--c1:#f59e0b;--c2:#7c3aed">
-          <span class="chap-emo" aria-hidden="true">🧢</span>
-          <span class="chap-badge">Chapter 4</span>
-          <span class="chap-title">The Cap-seller and the Monkeys</span>
-          <span class="chap-topic">Story &amp; sequencing</span>
-          <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
-        </a>
-        <a class="chap-card" href="chapters/en5.html" data-chap-stars="en5" style="--c1:#16a34a;--c2:#eab308">
-          <span class="chap-emo" aria-hidden="true">🐄</span>
-          <span class="chap-badge">Chapter 5</span>
-          <span class="chap-title">A Farm</span>
-          <span class="chap-topic">Farm animals &amp; sounds</span>
-          <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
-        </a>
-        <a class="chap-card" href="chapters/en6.html" data-chap-stars="en6" style="--c1:#ef4444;--c2:#22c55e">
-          <span class="chap-emo" aria-hidden="true">🥭</span>
-          <span class="chap-badge">Chapter 6</span>
-          <span class="chap-title">Fun with Pictures</span>
-          <span class="chap-topic">Fruits &amp; vegetables</span>
-          <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
-        </a>
-        <a class="chap-card" href="chapters/en7.html" data-chap-stars="en7" style="--c1:#f97316;--c2:#ec4899">
-          <span class="chap-emo" aria-hidden="true">🍽️</span>
-          <span class="chap-badge">Chapter 7</span>
-          <span class="chap-title">The Food we Eat</span>
-          <span class="chap-topic">Food, riddles &amp; sharing</span>
-          <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
-        </a>
-        <a class="chap-card" href="chapters/en8.html" data-chap-stars="en8" style="--c1:#06b6d4;--c2:#8b5cf6">
-          <span class="chap-emo" aria-hidden="true">🌦️</span>
-          <span class="chap-badge">Chapter 8</span>
-          <span class="chap-title">The Four Seasons</span>
-          <span class="chap-topic">Seasons &amp; clothes</span>
-          <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
-        </a>
-        <a class="chap-card" href="chapters/en9.html" data-chap-stars="en9" style="--c1:#6366f1;--c2:#f43f5e">
-          <span class="chap-emo" aria-hidden="true">🌈</span>
-          <span class="chap-badge">Chapter 9</span>
-          <span class="chap-title">Anandi&rsquo;s Rainbow</span>
-          <span class="chap-topic">Colours of the rainbow</span>
-          <span class="chap-stars" aria-label="Your stars for this chapter">☆☆☆</span>
-        </a>
-    </div>
-  </section>
+  
 
   <!-- Class 2 English — every chapter, learned by playing -->
   <section class="row" id="class2-english">
@@ -1682,22 +1686,82 @@
     </div>
   </section>
 
-  <!-- SEO: crawlable content, internal category links and FAQ -->
+  <!-- Class 4 hub: all seven NCERT Class 4 books -->
+  <section class="row" id="class4">
+    <div class="row-head">
+      <h2 id="class4-chapters">📚 Class 4 — every subject, learned by playing</h2>
+      <span class="count">7 subjects</span>
+    </div>
+    <p class="learn-lede">All seven NCERT Class 4 books as kid-friendly lessons — each chapter will have a story, key points, word cards and a star-rated game. Pick a book to start:</p>
+    <div class="book-grid">
+        <a class="chap-card" href="#class4-maths" style="--c1:#5b3df5;--c2:#ff4d8d">
+          <span class="chap-emo" aria-hidden="true">🧮</span>
+          <span class="chap-badge">Maths</span>
+          <span class="chap-title">Maths Magic</span>
+          <span class="chap-topic">14 chapters</span>
+          <span class="chap-stars" aria-label="Coming soon">🔒</span>
+        </a>
+        <a class="chap-card" href="#class4-english" style="--c1:#ef476f;--c2:#ffb703">
+          <span class="chap-emo" aria-hidden="true">📚</span>
+          <span class="chap-badge">English</span>
+          <span class="chap-title">Marigold</span>
+          <span class="chap-topic">10 chapters</span>
+          <span class="chap-stars" aria-label="Coming soon">🔒</span>
+        </a>
+        <a class="chap-card" href="#class4-hindi" style="--c1:#f59e0b;--c2:#7c3aed">
+          <span class="chap-emo" aria-hidden="true">📖</span>
+          <span class="chap-badge">Hindi</span>
+          <span class="chap-title">Rimjhim</span>
+          <span class="chap-topic">14 chapters</span>
+          <span class="chap-stars" aria-label="Coming soon">🔒</span>
+        </a>
+        <a class="chap-card" href="#class4-evs" style="--c1:#0ea5e9;--c2:#22c55e">
+          <span class="chap-emo" aria-hidden="true">🌍</span>
+          <span class="chap-badge">EVS</span>
+          <span class="chap-title">Looking Around</span>
+          <span class="chap-topic">13 chapters</span>
+          <span class="chap-stars" aria-label="Coming soon">🔒</span>
+        </a>
+        <a class="chap-card" href="#class4-arts" style="--c1:#ec4899;--c2:#8b5cf6">
+          <span class="chap-emo" aria-hidden="true">🎨</span>
+          <span class="chap-badge">Arts</span>
+          <span class="chap-title">Bansuri</span>
+          <span class="chap-topic">10 chapters</span>
+          <span class="chap-stars" aria-label="Coming soon">🔒</span>
+        </a>
+        <a class="chap-card" href="#class4-sports" style="--c1:#10b981;--c2:#3b82f6">
+          <span class="chap-emo" aria-hidden="true">🏃</span>
+          <span class="chap-badge">Sports</span>
+          <span class="chap-title">Khel Yoga</span>
+          <span class="chap-topic">8 chapters</span>
+          <span class="chap-stars" aria-label="Coming soon">🔒</span>
+        </a>
+        <a class="chap-card" href="#class4-urdu" style="--c1:#8b5cf6;--c2:#06b6d4">
+          <span class="chap-emo" aria-hidden="true">📝</span>
+          <span class="chap-badge">Urdu</span>
+          <span class="chap-title">Sitar</span>
+          <span class="chap-topic">10 chapters</span>
+          <span class="chap-stars" aria-label="Coming soon">🔒</span>
+        </a>
+    </div>
+  </section>
+
+<!-- SEO: crawlable content, internal category links and FAQ -->
   <section class="row seo-copy" id="about">
     <div class="seo-card">
       <h2>Free online games you can play right now</h2>
       <p>PlayHub is a free game portal with 70 browser games you can start playing in seconds — no downloads, no installs and no sign-up. Race through <strong>Car Rush</strong>, blast meteors in <strong>Space Blaster</strong>, train your memory with <strong>Memory Match</strong>, or challenge yourself with classics like Snake, 2048, Simon Says and Word Scramble. Every game runs right here in your browser on phone, tablet, laptop or classroom computer.</p>
-      <p>Looking for games for kids? PlayHub pairs arcade fun with learning games that make practice feel like play: typing, counting, reading the clock, world flags and trivia — plus a complete <strong>Grade 1 Science and Mathematics olympiad</strong> course built around the SOF/IMO syllabus, and 13 <strong>Class 1 maths games</strong> that follow every chapter of the NCERT Joyful Mathematics book. Each of those 13 chapters is also its own <a href="#learning">lesson page</a> with key points, word cards and a star-rated game, and all 9 <strong>Class 1 English chapters</strong> of the NCERT Mridang book have <a href="#english">their own lesson pages</a> too. For Class 2 there are <a href="#class2-english">13 English lessons</a> from Mridang, <a href="#class2-maths">11 maths lessons</a> from Joyful Mathematics and <a href="#class2-hindi">26 Hindi lessons</a> from Sarangi. For Class 3 there are <a href="#class3">102 chapter lessons with games</a> from <a href="#class3-maths">Maths Mela</a>, <a href="#class3-english">Santoor</a>, <a href="#class3-hindi">Veena</a>, <a href="#class3-evs">Our Wondrous World</a>, <a href="#class3-arts">Bansuri</a>, <a href="#class3-sports">Khel Yoga</a> and <a href="#class3-urdu">Sitar</a>. Browse free online games for boys and girls below, or jump straight into the arcade shelf.</p>
+      <p>Looking for games for kids? PlayHub pairs arcade fun with learning games that make practice feel like play: typing, counting, reading the clock, world flags and trivia — plus a complete <strong>Grade 1 Science and Mathematics olympiad</strong> course built around the SOF/IMO syllabus, and 22 <strong>Class 1 maths and English games</strong> that follow every chapter of the NCERT Joyful Mathematics book. Each of those 13 chapters is also its own <a href="#class1">lesson page</a> with key points, word cards and a star-rated game, and all 9 <strong>Class 1 English chapters</strong> of the NCERT Mridang book have <a href="#class1">their own lesson pages</a> too. For Class 2 there are <a href="#class2-english">13 English lessons</a> from Mridang, <a href="#class2-maths">11 maths lessons</a> from Joyful Mathematics and <a href="#class2-hindi">26 Hindi lessons</a> from Sarangi. For Class 3 there are <a href="#class3">102 chapter lessons with games</a> from <a href="#class3-maths">Maths Mela</a>, <a href="#class3-english">Santoor</a>, <a href="#class3-hindi">Veena</a>, <a href="#class3-evs">Our Wondrous World</a>, <a href="#class3-arts">Bansuri</a>, <a href="#class3-sports">Khel Yoga</a> and <a href="#class3-urdu">Sitar</a>. For Class 4 there are <a href="#class4">7 subject lessons with games</a> from <a href="#class4-maths">Maths Magic</a>, <a href="#class4-english">Marigold</a>, <a href="#class4-hindi">Rimjhim</a>, <a href="#class4-evs">Looking Around</a>, <a href="#class4-arts">Bansuri</a>, <a href="#class4-sports">Khel Yoga</a> and <a href="#class4-urdu">Sitar</a>. Browse free online games below, or jump straight into the arcade shelf.</p>
 
       <h2>Browse free games by category</h2>
       <p>Use the category links below to jump straight to the shelf you want — every shelf has its own shareable link.</p>
       <ul class="seo-links">
         <li><a class="chip" data-cat="all" href="#cat-all">All games</a></li>
         <li><a class="chip" data-cat="learning" href="#cat-learning">Learning games</a></li>
-        <li><a class="chip" data-cat="class1" href="#cat-class1">Class 1 maths</a></li>
+        <li><a class="chip" data-cat="class1" href="#cat-class1">Class 1</a></li>
         <li><a class="chip" data-cat="kids" href="#cat-kids">Kids games</a></li>
-        <li><a class="chip" data-cat="boys" href="#cat-boys">Games for boys</a></li>
-        <li><a class="chip" data-cat="girls" href="#cat-girls">Games for girls</a></li>
+        <li><a class="chip" data-cat="adventure" href="#cat-action">Adventure</a></li>
+        <li><a class="chip" data-cat="arts" href="#cat-creative">Arts & Crafts</a></li>
         <li><a class="chip" data-cat="knowledge" href="#cat-knowledge">Knowledge games</a></li>
         <li><a class="chip" data-cat="arcade" href="#cat-arcade">Arcade games</a></li>
         <li><a class="chip" data-cat="puzzle" href="#cat-puzzle">Puzzle games</a></li>
@@ -1741,6 +1805,18 @@
         <li><a class="chip" href="#class3-arts">Class 3 Arts — Bansuri</a></li>
         <li><a class="chip" href="#class3-sports">Class 3 Sports — Khel Yoga</a></li>
         <li><a class="chip" href="#class3-urdu">Class 3 Urdu — Sitar</a></li>
+      </ul>
+
+      <h2>Class 4 lessons — Maths Magic, Marigold, Rimjhim, Looking Around, Bansuri, Khel Yoga, Sitar</h2>
+      <p>Free Class 4 chapter lessons with games: Maths Magic, Marigold English, Rimjhim Hindi, Looking Around EVS, Bansuri Arts, Khel Yoga Sports and Sitar Urdu. Jump to a book:</p>
+      <ul class="seo-links">
+        <li><a class="chip" href="#class4-maths">Class 4 Maths — Maths Magic</a></li>
+        <li><a class="chip" href="#class4-english">Class 4 English — Marigold</a></li>
+        <li><a class="chip" href="#class4-hindi">Class 4 Hindi — Rimjhim</a></li>
+        <li><a class="chip" href="#class4-evs">Class 4 EVS — Looking Around</a></li>
+        <li><a class="chip" href="#class4-arts">Class 4 Arts — Bansuri</a></li>
+        <li><a class="chip" href="#class4-sports">Class 4 Sports — Khel Yoga</a></li>
+        <li><a class="chip" href="#class4-urdu">Class 4 Urdu — Sitar</a></li>
       </ul>
 
       <h2>New kids games — makeover, runner, talking friends, peek-a-boo &amp; more</h2>
@@ -1809,7 +1885,7 @@
         </div>
         <div class="faq-item">
           <h3>What learning games can kids play?</h3>
-          <p>Kids can practise typing, maths, reading the clock, counting, world flags and word puzzles, plus a Grade 1 Science and Mathematics olympiad course with 15 chapters per subject. There are also 13 Class 1 maths games that follow every chapter of the NCERT Joyful Mathematics book, and 9 Class 1 English chapter lessons with games from the NCERT Mridang book. For Class 2 there are 13 English, 11 maths and 26 Hindi chapter lessons with games. For Class 3 there are 102 chapter lessons with games across Maths Mela, Santoor, Veena, Our Wondrous World, Bansuri, Khel Yoga and Sitar.</p>
+          <p>Kids can practise typing, maths, reading the clock, counting, world flags and word puzzles, plus a Grade 1 Science and Mathematics olympiad course with 15 chapters per subject. There are also 22 Class 1 maths and English games that follow every chapter of the NCERT Joyful Mathematics book, and 9 Class 1 English chapter lessons with games from the NCERT Mridang book. For Class 2 there are 13 English, 11 maths and 26 Hindi chapter lessons with games. For Class 3 there are 102 chapter lessons with games across Maths Mela, Santoor, Veena, Our Wondrous World, Bansuri, Khel Yoga and Sitar.</p>
         </div>
         <div class="faq-item">
           <h3>Do I need an account or sign-up?</h3>

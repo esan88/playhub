@@ -3,10 +3,10 @@
 GamePortal.register('glam', {
   title: 'Glam Cuties',
   emoji: '💄',
-  cat: 'girls',
+  cat: 'arts',
   c1: '#ff5d8f',
   c2: '#ffb3c9',
-  tags: ['makeup', 'makeover', 'salon', 'princess', 'girls', 'fashion', 'cute', 'kids', 'casual', 'beauty', 'studio', 'levels'],
+  tags: ['makeup', 'makeover', 'salon', 'princess', 'arts', 'fashion', 'cute', 'kids', 'casual', 'beauty', 'studio', 'levels'],
   rating: 4.8,
   plays: '0.4M',
   badge: 'New',

@@ -2,10 +2,10 @@
 GamePortal.register('cake', {
   title: 'Bunny Bakery',
   emoji: '🐰',
-  cat: 'girls',
+  cat: 'arts',
   c1: '#f78fb3',
   c2: '#c8f2ee',
-  tags: ['cake', 'bakery', 'cooking', 'girls', 'casual', 'kids', 'baking', 'sweet'],
+  tags: ['cake', 'bakery', 'cooking', 'arts', 'casual', 'kids', 'baking', 'sweet'],
   rating: 4.7,
   plays: '0.3M',
   badge: 'New',

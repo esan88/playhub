@@ -2,7 +2,7 @@
 GamePortal.register('carrush', {
   title: 'Car Rush',
   emoji: '🏎️',
-  cat: 'boys',
+  cat: 'adventure',
   c1: '#1d3557',
   c2: '#e63946',
   tags: ['car', 'racing', 'race', 'boys', 'speed', 'arcade', 'kids', 'drive'],

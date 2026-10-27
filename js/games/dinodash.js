@@ -2,7 +2,7 @@
 GamePortal.register('dinodash', {
   title: 'Dino Dash',
   emoji: '🦖',
-  cat: 'boys',
+  cat: 'adventure',
   c1: '#386641',
   c2: '#a7c957',
   tags: ['dino', 'runner', 'jump', 'boys', 'arcade', 'kids', 'endless', 'desert'],

@@ -2,10 +2,10 @@
 GamePortal.register('dressup', {
   title: 'Style Studio',
   emoji: '👗',
-  cat: 'girls',
+  cat: 'arts',
   c1: '#ff5d8f',
   c2: '#ffc2d4',
-  tags: ['dressup', 'fashion', 'girls', 'casual', 'kids', 'style', 'clothes'],
+  tags: ['dressup', 'fashion', 'arts', 'casual', 'kids', 'style', 'clothes'],
   rating: 4.8,
   plays: '0.3M',
   badge: 'New',

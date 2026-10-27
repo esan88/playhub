@@ -3,10 +3,10 @@
 GamePortal.register('cafe', {
   title: 'Kitty Café',
   emoji: '☕',
-  cat: 'girls',
+  cat: 'arts',
   c1: '#92400e',
   c2: '#fcd34d',
-  tags: ['cafe', 'kitty', 'serve', 'orders', 'time', 'management', 'girls', 'cats', 'treats', 'restaurant', 'quick', 'cute'],
+  tags: ['cafe', 'kitty', 'serve', 'orders', 'time', 'management', 'arts', 'cats', 'treats', 'restaurant', 'quick', 'cute'],
   rating: 4.7,
   plays: '0.3M',
   badge: 'Time fun',

@@ -2,10 +2,10 @@
 GamePortal.register('space', {
   title: 'Space Blaster',
   emoji: '🚀',
-  cat: 'boys',
+  cat: 'adventure',
   c1: '#240046',
   c2: '#7b2cbf',
-  tags: ['space', 'shooter', 'meteors', 'boys', 'arcade', 'action', 'kids', 'rocket'],
+  tags: ['space', 'shooter', 'meteors', 'boys', 'arcade', 'adventure', 'kids', 'rocket'],
   rating: 4.6,
   plays: '0.6M',
   badge: 'New',

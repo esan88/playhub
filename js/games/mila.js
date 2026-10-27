@@ -7,7 +7,7 @@ GamePortal.register('mila', {
   cat: 'kids',
   c1: '#059669',
   c2: '#a7f3d0',
-  tags: ['bear', 'forest', 'picnic', 'catch', 'friends', 'nature', 'kids', 'girls', 'boys', 'basket', 'levels', 'bramble'],
+  tags: ['bear', 'forest', 'picnic', 'catch', 'friends', 'nature', 'kids', 'arts', 'boys', 'basket', 'levels', 'bramble'],
   rating: 4.8,
   plays: '0.3M',
   badge: 'New',

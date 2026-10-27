@@ -3,10 +3,10 @@
 GamePortal.register('nails', {
   title: 'Nail Art Studio',
   emoji: '💅',
-  cat: 'girls',
+  cat: 'arts',
   c1: '#db2777',
   c2: '#f9a8d4',
-  tags: ['nails', 'nail art', 'makeover', 'salon', 'design', 'girls', 'paint', 'fashion', 'colour', 'patterns', 'creative'],
+  tags: ['nails', 'nail art', 'makeover', 'salon', 'design', 'arts', 'paint', 'fashion', 'colour', 'patterns', 'creative'],
   rating: 4.9,
   plays: '0.3M',
   badge: 'New',

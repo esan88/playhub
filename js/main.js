@@ -8,10 +8,13 @@
   var CATS = [
     { id: 'all', label: 'All', emoji: '✨' },
     { id: 'learning', label: 'Learning', emoji: '📚' },
-    { id: 'class1', label: 'Class 1 Maths', emoji: '🧮' },
+    { id: 'class1', label: 'Class 1', emoji: '🧮' },
+    { id: 'class2', label: 'Class 2', emoji: '📖' },
+    { id: 'class3', label: 'Class 3', emoji: '🧪' },
+    { id: 'class4', label: 'Class 4', emoji: '🔬' },
     { id: 'kids', label: 'Kids', emoji: '🧒' },
-    { id: 'boys', label: 'For Boys', emoji: '🏎️' },
-    { id: 'girls', label: 'For Girls', emoji: '🎀' },
+    { id: 'adventure', label: 'Adventure', emoji: '🏃' },
+    { id: 'arts', label: 'Arts & Crafts', emoji: '🎨' },
     { id: 'knowledge', label: 'Knowledge', emoji: '🌍' },
     { id: 'arcade', label: 'Arcade', emoji: '👾' },
     { id: 'puzzle', label: 'Puzzle', emoji: '🧠' },
@@ -24,10 +27,10 @@
   var cleanup = null;
   var crashGuard = false;
 
-  /* extra games shown in a shelf even though their primary cat differs */
+/* extra games shown in a shelf even though their primary cat differs */
   var AUD = {
-    boys: ['snake', 'breakout', 'flappy', 'tictactoe', 'g2048', 'whack'],
-    girls: ['memory', 'flags', 'trivia', 'scramble', 'clock', 'counting'],
+    adventure: ['snake', 'breakout', 'flappy', 'tictactoe', 'g2048', 'whack', 'basket', 'carrush', 'dinodash', 'space'],
+    arts: ['memory', 'flags', 'trivia', 'scramble', 'clock', 'counting', 'baker', 'starcatch', 'dressup', 'cake', 'unicorn', 'glam', 'fairy', 'kcook', 'nails', 'kitty', 'cafe', 'bracelet'],
     kids: ['basket', 'carrush', 'dinodash', 'space', 'baker', 'starcatch', 'dressup', 'cake', 'unicorn', 'chess', 'touchtype', 'sudoku', 'coderobot', 'durga', 'ravandahan'],
     arcade: ['space', 'carrush', 'dinodash', 'unicorn', 'starcatch'],
     casual: ['dressup', 'cake'],
@@ -410,6 +413,32 @@
       var ex = document.exitFullscreen || document.webkitExitFullscreen;
       if (ex) ex.call(document);
       return;
+
+  /* Class 1 tab switching */
+  function initClass1Tabs() {
+    var tabs = document.querySelectorAll('#class1 .tab-btn');
+    tabs.forEach(function (btn) {
+      btn.onclick = function () {
+        var tabId = btn.dataset.tab;
+        tabs.forEach(function (b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        document.querySelectorAll('#class1 .tab-panel').forEach(function (panel) {
+          panel.hidden = true;
+          panel.classList.remove('active');
+        });
+        var panel = document.getElementById(tabId);
+        if (panel) {
+          panel.hidden = false;
+          panel.classList.add('active');
+        }
+      };
+    });
+  }
+
     }
     var req = maxTarget.requestFullscreen || maxTarget.webkitRequestFullscreen;
     if (req) {
@@ -577,7 +606,8 @@
     renderHero();
     renderFooter();
     renderChapStars();
-    bind();
+    bind()
+    initClass1Tabs();;
     applyHash();
   });
 })();

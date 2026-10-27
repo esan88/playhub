@@ -3,10 +3,10 @@
 GamePortal.register('fairy', {
   title: 'Lulu Star Fairy',
   emoji: '🧚',
-  cat: 'girls',
+  cat: 'arts',
   c1: '#8b5cf6',
   c2: '#f0abfc',
-  tags: ['fairy', 'angel', 'talking angel', 'angels', 'wings', 'talking', 'lullaby', 'girls', 'kids', 'cute', 'sing', 'levels'],
+  tags: ['fairy', 'angel', 'talking angel', 'angels', 'wings', 'talking', 'lullaby', 'arts', 'kids', 'cute', 'sing', 'levels'],
   rating: 4.9,
   plays: '0.4M',
   badge: 'New',

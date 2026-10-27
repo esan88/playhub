@@ -2,10 +2,10 @@
 GamePortal.register('unicorn', {
   title: 'Unicorn Catch',
   emoji: '🦄',
-  cat: 'girls',
+  cat: 'arts',
   c1: '#5b21b6',
   c2: '#f0abfc',
-  tags: ['girls', 'unicorn', 'catch', 'arcade', 'casual', 'fun', 'kids', 'rainbow'],
+  tags: ['arts', 'unicorn', 'catch', 'arcade', 'casual', 'fun', 'kids', 'rainbow'],
   rating: 4.7,
   plays: '0.6M',
   badge: 'New',

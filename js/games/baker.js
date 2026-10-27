@@ -2,10 +2,10 @@
 GamePortal.register('baker', {
   title: "Baker's Kitchen",
   emoji: '🧁',
-  cat: 'girls',
+  cat: 'arts',
   c1: '#fb7185',
   c2: '#fde68a',
-  tags: ['girls', 'baking', 'cake', 'memory', 'sequence', 'cooking', 'kids', 'fun', 'learning'],
+  tags: ['arts', 'baking', 'cake', 'memory', 'sequence', 'cooking', 'kids', 'fun', 'learning'],
   rating: 4.7,
   plays: '1.3M',
   badge: 'For girls',
